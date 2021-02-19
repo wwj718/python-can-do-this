@@ -10,7 +10,7 @@ def _get_content():
     """ Get content from My Clippings.txt
     """
     assert os.path.exists(CLIPPINGS_FILE)
-    with codecs.open(CLIPPINGS_FILE, encoding='utf-8') as f:
+    with codecs.open(CLIPPINGS_FILE, encoding='utf-8', errors='ignore') as f:
         content = f.read()
     return content
 
@@ -20,9 +20,9 @@ def _add_memo_to_file(memo, filename):
     :param filename string: filename
     """
     if not os.path.exists(filename):
-        with codecs.open(filename, mode='a', encoding='utf-8') as f:
+        with codecs.open(filename, mode='a', encoding='utf-8', errors='ignore') as f:
             f.write('# {}\n\n'.format(filename[:-3]))
-    with codecs.open(filename, mode='a', encoding='utf-8') as f:
+    with codecs.open(filename, mode='a', encoding='utf-8', errors='ignore') as f:
         f.write('* {}\n'.format(memo))
 
 def main():
